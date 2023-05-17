@@ -4,10 +4,6 @@ const scss = require("gulp-sass")(require("sass"));
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify-es").default;
 
-function scripts() {
-	return src("app/js/script.js")
-}
-
 function styles() {
 	return src("app/scss/style.scss")
 		.pipe(concat("style.min.css"))
@@ -15,4 +11,9 @@ function styles() {
 		.pipe(dest("app/css"));
 }
 
+function scripts() {
+	return src("app/js/script.js").pipe(concat("script.min.js")).pipe(uglify()).pipe(dest("app/js-min"));
+}
+
 exports.styles = styles;
+exports.scripts = scripts;
