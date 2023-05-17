@@ -9,6 +9,7 @@
   "author": "Evgeniy Veligora",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.29.2",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^9.0.1",
