@@ -7,16 +7,22 @@ const browserSync = require("browser-sync").create();
 const autoprefixer = require("gulp-autoprefixer");
 
 function styles() {
-	return src("app/scss/style.scss")
-		.pipe(
-			autoprefixer({
-				overrideBrowserlist: ["last 3 version"],
-			})
-		)
-		.pipe(concat("style.min.css"))
-		.pipe(scss({ outputStyle: "compressed" }))
-		.pipe(dest("app/css"))
-		.pipe(browserSync.stream());
+	return (
+		src("app/scss/style.scss")
+			.pipe(
+				autoprefixer({
+					overrideBrowserlist: ["last 3 version"],
+				})
+			)
+			.pipe(concat("style.min.css"))
+			.pipe(scss({ outputStyle: "compressed" }))
+			// expanded - полностью развёрнутый CSS;
+			// nested - показывает вложенность (по умолчанию);
+			// compact - каждый селектор на новой строке;
+			// compressed - всё в одну строку.
+			.pipe(dest("app/css"))
+			.pipe(browserSync.stream())
+	);
 }
 
 function scripts() {
